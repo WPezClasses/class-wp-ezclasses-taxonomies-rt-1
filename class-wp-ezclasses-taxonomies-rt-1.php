@@ -98,9 +98,13 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	
 	/**
 	 * This is where your magic happens. The idea here is to (re) define as little as possible. 
+	 *
+	 * It is recommended you use this  boilerplate: https://github.com/WPezClasses/class-wp-ezclasses-taxonomies-rt-1-boilerplate-1
+	 *
+	 * This method remains simply as an example. 
 	 */
 	protected function taxonomy_todo(){
-	
+	  /*
 	  $str_taxonomy = substr('TODO_' . __CLASS__, 0, 31);
 	
 	  $arr_taxonomy_todo = array(
@@ -115,10 +119,14 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 		    'singular_name'		=> 'TODO: singular_name',	// labels: 'singular_name'
 			'menu_name' 		=> 'TODO: name',			// labe
 			),
+		  'rewrite' => array(
+		    'slug' => 'TODO-slug',
+			),			
 		  ),
 	    );
 	  
 	  return $arr_taxonomy_todo;
+	  */
 	}
 		
 		
