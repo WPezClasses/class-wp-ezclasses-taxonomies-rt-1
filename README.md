@@ -14,6 +14,13 @@ Truth be told, the primary benefit here is automating the labels. That said, hav
 
 #### Overview
 
-Extend this class and all you need in your "local" class (at the very least) is the method: taxonomy_todo(). Do the TODOs there and that's it. 
+1) Make a copy of the boilerplate - giving it your own unique file + class name - into your theme or plugin:
 
-Of course, you can add to the args in taxonomy_todo() if you must. What's there now gives you a minimum viable taxonomy ;)
+https://github.com/WPezClasses/class-wp-ezclasses-taxonomies-rt-1-boilerplate-1
+
+2) Do the boilerplate's TODOs. 
+
+2.5) Don't forget to include / require it somewhere.
+
+3) Your taxonomy is...Done! Yeah, that ez. 
+

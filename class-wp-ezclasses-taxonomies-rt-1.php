@@ -49,6 +49,9 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	protected $_str_singular_name;
 	protected $_str_menu_name;
 	protected $_arr_args_all;
+	
+	protected $_str_action;
+	protected $_int_priority;
   
     protected $_arr_init;
 	
@@ -66,6 +69,9 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	 * which contains the WP register_post_type() function.
 	 */
 	 public function ez__construct() {
+	 
+	   $this->_str_action = 'init';
+	   $this->_int_priority = 10;
 	 
 	   $arr_tax_todo = $this->taxonomy_todo();
 	   
@@ -93,7 +99,7 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	   $this->_arr_args_all = $arr_arguments;
 	   
 	   // do it! do it now!! well, okay, on action init :)
-	   add_action('init', array($this, 'register_taxonomy_do'));
+	   add_action($this->_str_action, array($this, 'register_taxonomy_do'), $this->_int_priority);
 	}
 	
 	/**
@@ -104,8 +110,16 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	 * This method remains simply as an example. 
 	 */
 	protected function taxonomy_todo(){
-	  /*
+	
+	// $this->_str_action = 'init', 
+	// $this->_int_priortiy = 10, 
+	
+	  /**  
+	   * --
+	   
 	  $str_taxonomy = substr('TODO_' . __CLASS__, 0, 31);
+	  
+	  $arr_capabilities = $this->capabilities_defaults();
 	
 	  $arr_taxonomy_todo = array(
 	  
@@ -121,13 +135,31 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 			),
 		  'rewrite' => array(
 		    'slug' => 'TODO-slug',
-			),			
+			),
+		  'capabilities' => $arr_capabilities,
 		  ),
 	    );
 	  
 	  return $arr_taxonomy_todo;
+	  
+	  * --
 	  */
 	}
+	
+	/**
+	 * FYI - you might also in some cases want / need to muck with this.
+	 */
+	protected function capabilities_defaults(){
+	
+	  $arr_cap_defaults = array(
+	    'manage_terms',
+		'edit_terms',
+		'delete_terms',
+		'assign_terms'
+		);
+	  
+	  return $arr_cap_defaults;
+	}	
 		
 		
 	/**
@@ -227,22 +259,6 @@ if ( ! class_exists('Class_WP_ezClasses_Taxonomies_RT_1') ) {
 	  return $arr_arguments;
 	}
 	
-	/**
-	 *
-	 */
-	protected function capabilities_defaults(){
-	
-	  $arr_cap_defaults = array(
-	    'manage_terms',
-		'edit_terms',
-		'delete_terms',
-		'assign_terms'
-		);
-	  
-	  return $arr_cap_defaults;
-	}
-	  
-
   }
 } 
 
